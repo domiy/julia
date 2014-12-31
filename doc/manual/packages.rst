@@ -309,6 +309,47 @@ Once you do this, the package manager knows your GitHub user name and can config
 You should also `upload <https://github.com/settings/ssh>`_ your public SSH key to GitHub and set up an `SSH agent <http://linux.die.net/man/1/ssh-agent>`_ on your development machine so that you can push changes with minimal hassle.
 In the future, we will make this system extensible and support other common git hosting options like `BitBucket <https://bitbucket.org>`_ and allow developers to choose their favorite.
 
+Guidelines for Naming a Package
+-------------------------------
+
+Packages should be given names that are understandable to the general Julia
+user population, *even to users who are not domain experts*.
+
+1. Don't use an acronym unless there is minimal possibility of confusion. Avoid
+   jargon.
+
+  * It's ok to say ``USA`` if you're talking about the USA
+  * It's not ok to say ``PMA``, even if you're talking about positive mental attitude
+
+2. Package names should be plural, especially if you want to define a type in
+   your package with a similar name.
+
+  * ``DataFrames`` provides the ``DataFrame`` type.
+  * ``BloomFilters`` provides the ``BloomFilter`` type.
+
+3. Err on the side of clarity, even if clarity seems long-winded to you.
+
+  * If you're aiming to write the definitive Julia tool for data visualization,
+    ``DataVisualization`` is a sane name. ``DataViz`` should also work. But
+    ``DTVIZ`` is a bad name.
+
+4. Non-informative names make sense for projects that are not comprehensive and
+   "unique sources of truth" for a certain set of problems.
+  
+  * There are many ways to fit neural nets, so no package should be called
+    ``NeuralNets`` unless it aims to implement all these algorithms.
+
+  * There is no need for many competing implementations of bubble sort. So all
+    sorting algorithms belong in the ``SortingAlgorithms`` package.
+
+5. A possible exception to the above guidelines are packages that wrap external
+   libraries, which should be named after the library in question.
+   
+  * ``CPLEX.jl`` wraps the ``CPLEX`` library, which can be identified easily in
+    a web search.
+
+  * ``MATLAB.jl`` provides an interface to call the MATLAB engine from within Julia.
+
 Generating a New Package
 ------------------------
 
